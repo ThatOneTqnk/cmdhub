@@ -1,10 +1,96 @@
 <html>
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <title>Page</title>
+  <title>Find and Replace</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.0.min.js" integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="shortcut icon" type="image/png" href="favicon.png">
 </head>
 <body>
-<p>a</p>
+    <div style="text-align: center;">
+        <h3><i class="fa fa-search" aria-hidden="true"></i> Find and replace</h3>
+        <div style="display: none" id="apperr">
+                <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Could not find the expression!</p>
+        </div>
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s4 push-s4">
+                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                        <label>Input text here</label>
+                    </div>
+                </div>
+            </form>
+
+
+
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s4 push-s4">
+                    <input placeholder="Find text" id="find_text" type="text" class="validate">
+                    <label>Find</label>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s4 push-s4">
+                    <input placeholder="Replace text" id="replace_text" type="text" class="validate">
+                    <label for="replace_text" id="reptext">Replace</label>
+                </div>
+            </div>
+        </form>
+    </div>
+   <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s4 push-s4">
+                  <textarea id="textarea2" class="materialize-textarea" placeholder="Stuff will appear here" readonly></textarea>
+                  <label>Output</label>
+                </div>
+              </div>
+            </form>
+    </div>
+        <button class="waves-effect waves-light btn" onclick="copyToClipboard('textarea2')">Copy</button>
+        <button class="waves-effect waves-light btn" href="#!" onclick="strG()">SUBMIT</button>
+    </div>
+
+ 
+
+
+    <script type="text/javascript">
+        function strG() {
+            document.getElementById('apperr').style.display = 'none';
+            var orig = document.getElementById('textarea1').value;
+            var find1 = document.getElementById('find_text').value;
+            var rep1 = document.getElementById('replace_text').value;
+            find1 = find1.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+            var expreg = new RegExp(find1, 'gi');
+            var followedThrough = orig.search(expreg);
+            if (followedThrough <= -1) {
+                document.getElementById('apperr').style.display = 'inline';
+                document.getElementById('textarea2').value = "No results."
+                return;
+            }
+            orig = orig.replace(expreg, rep1);
+            document.getElementById('textarea2').value = orig;
+        }
+
+        function copyToClipboard(elementId) {
+            var aux = document.createElement("input");
+            aux.setAttribute("value", document.getElementById(elementId).value);
+            document.body.appendChild(aux);
+            aux.select();
+            document.execCommand("copy");
+            document.body.removeChild(aux);
+
+        }
+    </script>
 </body>
 </html>
