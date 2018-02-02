@@ -1,97 +1,187 @@
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Find and Replace</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Command Hub</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-  <script src="https://code.jquery.com/jquery-3.3.0.min.js" integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="shortcut icon" type="image/png" href="favicon.png">
+<style>
+  /* BG GRADIENT uiGradient */
+  .bg1 {
+    background: #000428;
+    background: -webkit-linear-gradient(to right, #004e92, #000428);
+    background: linear-gradient(to right, #004e92, #000428); 
+  }
+  .bg2 {
+    background: #2C3E50;
+    background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);
+    background: linear-gradient(to right, #4CA1AF, #2C3E50);
+  }
+  .bg3 {
+    background: rgb(241, 230, 230);
+  }
+
+  .bg4 {
+    background: #8e9eab;
+    background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);
+    background: linear-gradient(to right, #eef2f3, #8e9eab);
+  }
+  
+  nav ul a, nav .brand-logo {
+    color: #444;
+  }
+
+
+  p {
+    line-height: 2rem;
+  }
+
+  .button-collapse {
+    color: #26a69a;
+  }
+
+  .parallax-container {
+    min-height: 380px;
+    line-height: 0;
+    height: 555px;
+    color: rgba(255,255,255,.9);
+  }
+    .parallax-container .section {
+      width: 100%;
+    }
+
+  @media only screen and (max-width : 992px) {
+    .parallax-container .section {
+      position: absolute;
+      top: 40%;
+    }
+    #index-banner .section {
+      top: 40%;
+    }
+  }
+
+  @media only screen and (max-width : 600px) {
+    #index-banner .section {
+      top: 0;
+    }
+  }
+
+  .icon-block {
+    padding: 0 15px;
+  }
+  .icon-block .material-icons {
+    font-size: inherit;
+  }
+
+  </style>
 </head>
 <body>
-    <div style="text-align: center;">
-        <h3><i class="fa fa-search" aria-hidden="true"></i> Find and replace</h3>
-        <div style="display: none" id="apperr">
-                <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Could not find the expression!</p>
+
+  <div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper blue lighten-4">
+          <a href="#" class="brand-logo">IMG</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#">Stuff</a></li>
+          </ul>
         </div>
-        <div class="row">
-            <form class="col s12">
-                <div class="row">
-                    <div class="input-field col s4 push-s4">
-                        <textarea id="textarea1" class="materialize-textarea"></textarea>
-                        <label>Input text here</label>
-                    </div>
-                </div>
-            </form>
+    </nav>
+  </div>
+
+
+  <div id="index-banner" class="parallax-container bg1">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center white-text text-lighten-2" style="padding-top: 40px;">Command Hub</h1>
+          <div class="row center">
+            <h5 class="header col s12 light" style="font-weight: 300">Made for command developers.</h5>
+          </div>
+          <div class="row center">
+            <a href="#" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get to the Goods</a>
+          </div>
+          <br><br>
+      </div>
+    </div>  
+  </div>
 
 
 
-    <div class="row">
-        <form class="col s12">
-            <div class="row">
-                <div class="input-field col s4 push-s4">
-                    <input placeholder="Find text" id="find_text" type="text" class="validate">
-                    <label>Find</label>
-                </div>
-            </div>
-        </form>
+
+
+
+  <div class="row">
+    <div class="col s12 m4">
+      <div class="icon-block">
+        <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
+        <h5 class="center">No more boxes</h5>
+        <p class="light">While they provide a nice aesthetic effect, one command boxes are just hectic and messy for developers.</p>
+      </div>
     </div>
 
-
-    <div class="row">
-        <form class="col s12">
-            <div class="row">
-                <div class="input-field col s4 push-s4">
-                    <input placeholder="Replace text" id="replace_text" type="text" class="validate">
-                    <label for="replace_text" id="reptext">Replace</label>
-                </div>
-            </div>
-        </form>
-    </div>
-   <div class="row">
-            <form class="col s12">
-              <div class="row">
-                <div class="input-field col s4 push-s4">
-                  <textarea id="textarea2" class="materialize-textarea" placeholder="Stuff will appear here" readonly></textarea>
-                  <label>Output</label>
-                </div>
-              </div>
-            </form>
-    </div>
-        <button class="waves-effect waves-light btn" onclick="copyToClipboard('textarea2')">Copy</button>
-        <button class="waves-effect waves-light btn" href="#!" onclick="strG()">SUBMIT</button>
+    <div class="col s12 m4">
+        <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">card_giftcard</i></h2>
+            <h5 class="center">Instant results</h5>
+            <p class="light">Productive tools for command devleopers to hasten repetitive tasks. Preloaded customizable minigames to enjoy if you just want to relax.</p>
+        </div>
     </div>
 
- 
+  <div class="col s12 m4">
+      <div class="icon-block">
+        <h2 class="center brown-text"><i class="material-icons">check_circle</i></h2>
+        <h5 class="center">Instant results</h5>
+        <p class="light">No bullshit in between. Just input the information and get what you want.</p>
+      </div>
+  </div>
+
+</div>
+
+<!--
+  <div class="row">
+    <div class="col s12 bg4" style="height:50px; margin-bottom:-20px;">
+
+    </div> -->
 
 
-    <script type="text/javascript">
-        function strG() {
-            document.getElementById('apperr').style.display = 'none';
-            var orig = document.getElementById('textarea1').value;
-            var find1 = document.getElementById('find_text').value;
-            var rep1 = document.getElementById('replace_text').value;
-            find1 = find1.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-            var expreg = new RegExp(find1, 'gi');
-            var followedThrough = orig.search(expreg);
-            if (followedThrough <= -1) {
-                document.getElementById('apperr').style.display = 'inline';
-                document.getElementById('textarea2').value = "No results."
-                return;
-            }
-            orig = orig.replace(expreg, rep1);
-            document.getElementById('textarea2').value = orig;
-        }
 
-        function copyToClipboard(elementId) {
-            var aux = document.createElement("input");
-            aux.setAttribute("value", document.getElementById(elementId).value);
-            document.body.appendChild(aux);
-            aux.select();
-            document.execCommand("copy");
-            document.body.removeChild(aux);
+<div class="row" style="margin-bottom: 0px;">
+    <div class="col s12 m6 bg3" style="height:450px;">
+        <div class="center-align txt1">
+          <br>
+          <h4>Testimonials</h4><br><br>
+          <p><em>" do u kno da wae "</em> <br>- ThatOneTqnk</p>
+          <p><em>" this website actually sucks ass "</em> <br>- CMDBlocks</p>
+          <p><em>" help i have a virus "</em> <br>- Luuke</p>
+        </div>
+    </div>
+    <div class="col m6 hide-on-small-only"> 
+        <!--
+          width threshold 674
+          height 450
+        -->
+        <img src="vocall.png" style="margin-bottom: 0px; margin-left: -10px;" height=450 width=673>
+    </div>
+</div>
+  
+      
 
-        }
-    </script>
-</body>
+
+
+  <footer class="page-footer bg2" style="margin-top: -5px;">
+
+      <div class="container">
+      Made by <a class="brown-text text-lighten-3" href="http://github.com/ThatOneTqnk">ThatOneTqnk</a><br><br>
+      </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  </body>
 </html>
