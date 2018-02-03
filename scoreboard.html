@@ -23,6 +23,33 @@
             background-size: cover;
         }
     </style>
+
+
+<script>
+    function runScore() {
+        var ree1 = document.getElementById('obj').value;
+        var ree2 = document.getElementById('crit').value;
+        var ree3 = document.getElementById('content').value;
+        ree3 = ree3.replace(/&/g, '\\\\u00a7');
+        if (ree2.length < 1) {
+            ree2 = "dummy";
+        } 
+        var actual = '/give @p minecraft:sign 1 0 {BlockEntityTag:{Text1:"{\\"text\\":\\"\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"/scoreboard objectives add '+ree1+' '+ree2+' '+ree3+'\\"}}",Text2:"{\\"text\\":\\"Generate\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"setblock ~ ~ ~ air\\"}}",Text3:"{\\"text\\":\\"Right Click\\",\\"italic\\":true}"}}';
+        document.getElementById('scorearea').value = actual;
+
+    }
+
+    function copyToClipboard(elementId) {
+            var aux = document.createElement("input");
+            aux.setAttribute("value", document.getElementById(elementId).value);
+            document.body.appendChild(aux);
+            aux.select();
+            document.execCommand("copy");
+            document.body.removeChild(aux);
+    }
+</script>
+
+
 </head>
 <body>
     <div class="navbar-fixed">
@@ -48,7 +75,7 @@
                      <br>
                      <div class="center-align">
                         <div class="input-field col s4">
-                            <input placeholder="Scoreboard display text. Color codes permitted." id="text" type="text">
+                            <input placeholder="Scoreboard display text. Color codes permitted." id="content" type="text">
                             <br>
                             <br>
                             <input placeholder="Objective type (defaults to dummy)" id="crit" type="text">
@@ -59,12 +86,11 @@
                             <br>
                         </div>
                         <br><br><br>   
-                            <a class="waves-effect waves-light btn btn-large indigo lighten-2" style="width: calc(70% + 32px);">Submit</a>
+                            <a class="waves-effect waves-light btn btn-large indigo lighten-2" style="width: calc(70% + 32px);" onclick="runScore()">Submit</a>
                      </div>
                  </div>
             </div>
     </div>
-
 
 
 
@@ -78,10 +104,10 @@
                             <form class="col s12">
                                 <div class="row">
                                     <div class="input-field col s12">
-                                      <textarea id="textarea1" class="materialize-textarea" readonly placeholder="Stuff will appear here."></textarea>
+                                      <textarea id="scorearea" class="materialize-textarea" placeholder="Stuff will appear here." readonly></textarea>
                                     </div>
                                     <div class="center-align">
-                                      <a class="waves-effect waves-light btn btn-large green" style="width: calc(70% + 32px);">Copy</a>
+                                      <a class="waves-effect waves-light btn btn-large green" style="width: calc(70% + 32px);" onclick="copyToClipboard('scorearea')">Copy</a>
                                     </div>
                                 </div>
                             </form>
