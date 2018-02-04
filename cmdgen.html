@@ -170,6 +170,7 @@
                         rawcmd = rawcmd.replace(/!@#!SMREE_8_!@#!/g, '\\\\\\\\\\\\\\\\');
                         rawcmd = rawcmd.replace(/!@#!SMREE_4_!@#!/g, '\\\\\\\\');
                         rawcmd = rawcmd.replace(/!@#!SMREE_2_!@#!/g, '\\\\'); //Backslash appropriations terminate. Each backslash level tiers up by 1. Final raw command: setblock ~ ~ ~ command_block 0 0 {Command:\"tellraw @a \\\"\\\\u00a7cnested\\\"\"}
+                        rawcmd = rawcmd.trim();
                         
                         initials.push(rawcmd); // Adds rawcmd to the initials array
                     } else {
@@ -192,6 +193,7 @@
                         rawcmd = rawcmd.replace(/!@#!SMEE_15_!@#!/g, '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"');
                         rawcmd = rawcmd.replace(/!@#!SMEE_7_!@#!/g, '\\\\\\\\\\\\\\"');
                         rawcmd = rawcmd.replace(/!@#!SMEE_3_!@#!/g, '\\\\\\"');
+                        rawcmd = rawcmd.trim();
                         templist[0] = scmd;
                         templist[1] = rawcmd;
                         typemap.push(templist);
