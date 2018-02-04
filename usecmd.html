@@ -46,14 +46,13 @@
              <br><br><br><br><br>
              <h5 class="left">A new line = a new command</h5>
              <br><br><br>
-             <textarea style="height: 100%;" rows="10" readonly>R:say a&#13;&#10;C:say b&#13;&#10;CC:say c&#13;&#10;say d&#13;&#10;RC:say ree&#13;&#10;I:say test&#13;&#10;IC:say smee&#13;&#10;N:scoreboard objectives add die dummy</textarea>
+             <textarea style="height: 100%;" rows="10" readonly>R:say a&#13;&#10;C:say b&#13;&#10;CC:say c&#13;&#10;say d&#13;&#10;++z++&#13;&#10;RC:say ree&#13;&#10;I:say test&#13;&#10;IC:say smee&#13;&#10;N:scoreboard objectives add die dummy</textarea>
              <br><br>
-             <p>The above will put down a repeat command block facing up with the command 'say a'. <br>A chain will be placed on top of it with the command 'say b'.<br> On top of that will be a chain conditional block that has 'say c'.<br> On top of that will be a chain command block with 'say d' (A line without a type prefix will default to C:).<br> On top of that will be a repeating conditional block with 'say ree'.<br> On top of that will be a regular impulse block with 'say test'.<br> On top of that will be an impulse conditional with say 'smee'.<br> Before all of this, a command 'scoreboard objectives add die dummy' will be done once (N: signifies an initial command).<p>
+             <p>The above will put down a repeat command block facing up with the command 'say a'. <br>A chain will be placed on top of it with the command 'say b'.<br> On top of that will be a chain conditional block that has 'say c'.<br> On top of that will be a chain command block with 'say d' (A line without a type prefix will default to C:).<br> ++z++ - A Z offset will be applied. Meaning the commands will go to a new row. (~ ~ ~ goes to ~ ~ ~+1)!<br>On top of that will be a repeating conditional block with 'say ree'.<br> On top of that will be a regular impulse block with 'say test'.<br> On top of that will be an impulse conditional with say 'smee'.<br> Before all of this, a command 'scoreboard objectives add die dummy' will be done once (N: signifies an initial command).<p>
              <br><br><br>
             <p>As this is fragile, please be conscious of your syntax. Common mistakes include:</p>
             <textarea style="height: 100%;" rows="5" readonly>R: say a&#13;&#10;C:say b</textarea>
             <p>I know, it looks just fine. But the <strong>R: say a</strong> must be <strong>R:say a</strong>. (That 1 space makes a whole difference)</p>
-            <p>Commands stack up vertically. Adding row support in the future.</p>
             <br><br><br><br>
             <h4>Disclaimer: </h4>
             <p>Commands that have escape backslashes exceeding 15 will not parse through correctly.</p>

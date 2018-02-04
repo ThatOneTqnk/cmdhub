@@ -85,11 +85,13 @@
     <script>
         var totalcmd;
         var typemap;
-        var newl;   
+        var newl;
+        var zspan = 0; 
             $('.reesmee').click(function() {
                 typemap = [];
                 totalcmd = 'summon falling_block ~ ~1 ~ {Block:stone,Time:1,Passengers:[{id:falling_block,Block:redstone_block,Time:1,Passengers:[{id:falling_block,Block:activator_rail,Time:1,Passengers:[{id:commandblock_minecart,Command:"gamerule commandBlockOutput false"},'
                 newl = $(".txtarea1").val().split(/\n/gi);
+                zspan = 0;
                 parseCMD();
             });
 
@@ -101,6 +103,10 @@
                     templist = [];
                     condi = 0;
                     if (newl[x] == "") { // nope
+                        continue;
+                    } else if (newl[x] == "++z++") {
+                        templist[0] = "++z++";
+                        typemap.push(templist);
                         continue;
                     }
                     var scmd = "zxy";
@@ -194,10 +200,16 @@
                 for (inti = 0; inti < initials.length; inti++) {
                     totalcmd += '{id:commandblock_minecart,Command:"' + initials[inti] + '"},' // adds final init product to totalcmd
                 }
-
+                var yup = -4;
                 //alert((typemap[yval])[0] + ' ' + (typemap[yval])[1]);
                 for (var yval = 0; yval < typemap.length; yval++) {
-                    totalcmd += '{id:commandblock_minecart,Command:"setblock ~-2 ~' + yval + ' ~ ';
+                    yup++;
+                    if ((typemap[yval])[0] == '++z++') {
+                        zspan++;
+                        yup = -4;
+                        continue;
+                    }
+                    totalcmd += '{id:commandblock_minecart,Command:"setblock ~-2 ~' + yup + ' ~'+ zspan + ' ';
                     if ((typemap[yval])[0] == 'r') {
                         totalcmd += 'repeating_command_block 1 0 ';
                     } else if ((typemap[yval])[0] == 'c') {
