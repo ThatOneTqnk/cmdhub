@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CMD COMBINER</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.0.min.js" integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+        .br1 {
+            font-family: 'Anton', sans-serif;
+        }
+        nav ul a, nav .brand-logo {
+            color: #444;
+        }
+        body {
+            background: url(cinematic.jpg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+    </style>
+
+
+<script>
+
+    function copyToClipboard(elementId) {
+            var aux = document.createElement("input");
+            aux.setAttribute("value", document.getElementById(elementId).value);
+            document.body.appendChild(aux);
+            aux.select();
+            document.execCommand("copy");
+            document.body.removeChild(aux);
+    }
+</script>
+
+
+</head>
+<body>
+    <div class="navbar-fixed">
+            <nav>
+                <div class="nav-wrapper blue lighten-4">
+                    <a href="index.html" class="brand-logo br1" style="margin-left: 10px;"><em><strong>CMD HUB</strong></em></a>
+                    <ul class="right">
+                        <li><a href="index.html">Home</a></li>
+                    </ul>
+                </div>
+            </nav>
+    </div>
+
+
+    <div class="container" style="margin-top: 100px;">
+            <div class="card horizontal">
+              <div class="card-stacked">
+                <div class="card-content">
+
+
+                     <h4 class="center-align">Command Combiner</h4>
+                     <br>
+                     <p class="center-align">Enter in commands. Get a machine. Not sure how to use this? Check our <a href="usecmd.html" target="_blank">usage page</a></p>
+                     <br>
+                    <div class="row">
+                            <form class="col s12">
+                              <div class="row">
+                                <div class="input-field col s12">
+                                  <textarea id="textarea1" class="txtarea1" style="height: 1000px;"></textarea>
+                                  <label for="textarea1">Textarea</label>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                                
+                    <div class="center-align">
+                            <br>
+                            <a class="waves-effect waves-light btn btn-large indigo lighten-2 reesmee" style="width: calc(70% + 32px);">Submit</a>
+                     </div>
+                    </div>
+                 </div>
+            </div>
+    </div>
+
+    <script>
+        var totalcmd;
+        var typemap;
+        var newl;   
+            $('.reesmee').click(function() {
+                typemap = [];
+                totalcmd = 'summon falling_block ~ ~1 ~ {Block:stone,Time:1,Passengers:[{id:falling_block,Block:redstone_block,Time:1,Passengers:[{id:falling_block,Block:activator_rail,Time:1,Passengers:[{id:commandblock_minecart,Command:"gamerule commandBlockOutput false"},'
+                newl = $(".txtarea1").val().split(/\n/gi);
+                parseCMD();
+            });
+
+            function parseCMD() {
+                var templist = [];
+                var initials = [];
+                var condi; // lets make an example. suppose newl has 1 item in its array: N:setblock ~ ~ ~ command_block 0 0 {Command:"tellraw @a \"\\u00a7cnested\""}
+                for(x = 0; x < newl.length; x++) {
+                    templist = [];
+                    condi = 0;
+                    if (newl[x] == "") { // nope
+                        continue;
+                    }
+                    var scmd = "zxy";
+                    switch (newl[x].substring(0,2)) {
+                            case "R:": 
+                                scmd = "r";
+                                break;
+                            case "C:":
+                                scmd = "c";
+                                break;
+                            case "I:":
+                                scmd = "i";
+                                break;
+                            case "N:": //N case found
+                                scmd = "n";
+                    }
+                    if (scmd == "zxy") {
+                        condi = 1;
+                        switch (newl[x].substring(0,3)) {
+                            case "RC:":
+                                scmd = "rc";
+                                break;
+                            case "CC:":
+                                scmd = "cc";
+                                break;
+                            case "IC:":
+                                scmd = "ic";
+                                break;
+                            default:
+                                scmd = "ch";
+                        }
+                    };
+                    var rawcmd;
+                    if (scmd != "ch" && condi == 0) {
+                        rawcmd = newl[x].substring(2); // Sets actual command to rawcmd
+                    } else if (scmd != "ch" && condi == 1) {
+                        rawcmd = newl[x].substring(3);
+                    } else {
+                        scmd = "c";
+                        rawcmd = newl[x];
+                    }
+                    if (scmd == "n") { //This Code block is activated
+                        rawcmd = rawcmd.replace(/\\\\\\\\\\\\\\"/g, '!@#!SMEE_15_!@#!'); 
+                        rawcmd = rawcmd.replace(/\\\\\\"/g, '!@#!SMEE_7_!@#!');
+                        rawcmd = rawcmd.replace(/\\"/g, '!@#!SMEE_3_!@#!'); //Activated as query finds the result. Replaces the innermost one (one with 1 backslash) With SMEECODE3
+                        rawcmd = rawcmd.replace(/"/g, '!@#!SMEE_1_!@#!'); //Same as above, however, it applies to the outer ones now. SMEE CODE 1.
+
+                        
+
+
+                        rawcmd = rawcmd.replace(/\\\\\\\\/g, '!@#!SMREE_8_!@#!');
+                        rawcmd = rawcmd.replace(/\\\\/g, '!@#!SMREE_4_!@#!'); // \u00a7 handling. Works on the fragile basis that the only quotes left are part of these special chars. Finds double backslash. Replaces with SMREE code 4.
+                        rawcmd = rawcmd.replace(/\\/g, '!@#!SMREE_2_!@#!');
+                        
+                        rawcmd = rawcmd.replace(/!@#!SMEE_15_!@#!/g, '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"');
+                        rawcmd = rawcmd.replace(/!@#!SMEE_7_!@#!/g, '\\\\\\\\\\\\\\"');
+                        rawcmd = rawcmd.replace(/!@#!SMEE_3_!@#!/g, '\\\\\\"');
+                        rawcmd = rawcmd.replace(/!@#!SMEE_1_!@#!/g, '\\"');
+                        
+                        
+                        rawcmd = rawcmd.replace(/!@#!SMREE_8_!@#!/g, '\\\\\\\\\\\\\\\\');
+                        rawcmd = rawcmd.replace(/!@#!SMREE_4_!@#!/g, '\\\\\\\\');
+                        rawcmd = rawcmd.replace(/!@#!SMREE_2_!@#!/g, '\\\\'); //Backslash appropriations terminate. Each backslash level tiers up by 1. Final raw command: setblock ~ ~ ~ command_block 0 0 {Command:\"tellraw @a \\\"\\\\u00a7cnested\\\"\"}
+                        
+                        initials.push(rawcmd); // Adds rawcmd to the initials array
+                    } else {
+                        rawcmd = rawcmd.replace(/\\\\\\\\\\\\\\"/g, '!@#!SMEE_31_!@#!');
+                        rawcmd = rawcmd.replace(/\\\\\\"/g, '!@#!SMEE_15_!@#!');
+                        rawcmd = rawcmd.replace(/\\"/g, '!@#!SMEE_7_!@#!');
+                        rawcmd = rawcmd.replace(/"/g, '!@#!SMEE_3_!@#!');
+                        
+
+                        rawcmd = rawcmd.replace(/\\\\\\\\/g, '!@#!SMREE_16_!@#!');
+                        rawcmd = rawcmd.replace(/\\\\/g, '!@#!SMREE_8_!@#!');
+                        rawcmd = rawcmd.replace(/\\/g, '!@#!SMREE_4_!@#!');
+
+                        rawcmd = rawcmd.replace(/!@#!SMREE_16_!@#!/g, '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\');
+                        rawcmd = rawcmd.replace(/!@#!SMREE_8_!@#!/g, '\\\\\\\\\\\\\\\\');
+                        rawcmd = rawcmd.replace(/!@#!SMREE_4_!@#!/g, '\\\\\\\\');
+                        
+                        
+                        rawcmd = rawcmd.replace(/!@#!SMEE_31_!@#!/g, '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"');
+                        rawcmd = rawcmd.replace(/!@#!SMEE_15_!@#!/g, '\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"');
+                        rawcmd = rawcmd.replace(/!@#!SMEE_7_!@#!/g, '\\\\\\\\\\\\\\"');
+                        rawcmd = rawcmd.replace(/!@#!SMEE_3_!@#!/g, '\\\\\\"');
+                        templist[0] = scmd;
+                        templist[1] = rawcmd;
+                        typemap.push(templist);
+                    }
+                }
+                for (inti = 0; inti < initials.length; inti++) {
+                    totalcmd += '{id:commandblock_minecart,Command:"' + initials[inti] + '"},' // adds final init product to totalcmd
+                }
+
+                //alert((typemap[yval])[0] + ' ' + (typemap[yval])[1]);
+                for (var yval = 0; yval < typemap.length; yval++) {
+                    totalcmd += '{id:commandblock_minecart,Command:"setblock ~-2 ~' + yval + ' ~ ';
+                    if ((typemap[yval])[0] == 'r') {
+                        totalcmd += 'repeating_command_block 1 0 ';
+                    } else if ((typemap[yval])[0] == 'c') {
+                        totalcmd += 'chain_command_block 1 0 ';
+                    } else if ((typemap[yval])[0] == 'i') {
+                        totalcmd += 'command_block 1 0 ';
+                    } else if ((typemap[yval])[0] == 'rc') {
+                        totalcmd += 'repeating_command_block 9 0 ';
+                    } else if ((typemap[yval])[0] == 'cc') {
+                        totalcmd += 'chain_command_block 9 0 ';
+                    } else if ((typemap[yval])[0] == 'ic') {
+                        totalcmd += 'command_block 9 0 ';
+                    };
+                    if ((typemap[yval])[0] != "i") {
+                        totalcmd += '{auto:1,Command:\\"'
+                    } else {
+                        totalcmd += '{auto:0,Command:\\"'
+                    };
+                    totalcmd += (typemap[yval])[1];
+                    totalcmd += '\\"}"},';
+                };
+                totalcmd += '{id:commandblock_minecart,Command:"setblock ~ ~ ~1 command_block 1 0 {Command:\\"fill ~ ~-3 ~-1 ~ ~ ~ air\\"}"},{id:commandblock_minecart,Command:"setblock ~ ~-1 ~1 redstone_block",auto:1},{id:commandblock_minecart,Command:"minecraft:kill @e[type=commandblock_minecart,r=1]"}]}]}]}'
+                
+                $(".scorearea").html(totalcmd); // finished product
+            }
+        </script>
+
+
+
+    <div class="container" style="margin-top: 50px; width: 100%;">
+            <div class="card">
+              <div class="card-stacked">
+                <div class="card-content">
+                        <h5 class="center-align">Output</h5>
+                        <div class="row">
+                            <form class="col s12">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                      <textarea class="scorearea" id="scorearea" rows="30" cols="20" style="height:100%;" class="materialize-textarea" placeholder="Stuff will appear here." readonly></textarea>
+                                    </div>
+                                    <div class="center-align">
+                                      <a class="waves-effect waves-light btn btn-large green" style="width: calc(70% + 32px);" onclick="copyToClipboard('scorearea')">Copy</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>     
+                     </div>
+                 </div>
+            </div>
+    </div>
+</body>
+</html>
