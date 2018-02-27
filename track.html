@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>VOCALL FINDER</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.0.min.js" integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+        .br1 {
+            font-family: 'Anton', sans-serif;
+        }
+        nav ul a, nav .brand-logo {
+            color: #444;
+        }
+        body {
+            background: url('https://minotar.net/helm/Vocall/800.png') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+    </style>
+
+
+
+</head>
+<body>
+
+
+    <div class="container" style="margin-top: 50px;">
+            <div class="card horizontal">
+              <div class="card-stacked">
+                <div class="card-content">
+
+
+                     <h4 class="center-align"><span id="findpl">Vocall</span> Tracker</h4>
+                     <br>
+                     <p class="center-align">Want to annoy <span id="findpla">Vocall</span>? Do they got /find disabled? No worries! Find him here!</p>
+                     <br>
+                     <br>
+                     <div class="center-align">
+                        <p>Results:</p>
+                        <p id="fillserv">Finding player...</p>
+                        <br>
+                        <p>Search refreshes every 5 seconds.</p>
+                    </div>
+                    <br>
+                    <div class="row">
+                            <form class="col s12">
+                              <div class="row">
+                                <div class="input-field col s6 push-s3">
+                                  <input placeholder="Vocall" id="usern" type="text" class="validate">
+                                  <label for="usern">Username</label>
+                                </div>
+
+                              </div>
+                              
+                            </form>
+                    </div>
+                    <div class="center-align">
+                        <p>Want to change who you're finding for? Change the username and press submit!</p>
+                        <br>
+                        <button class="waves-effect waves-light btn" onclick="changeUser()">button</button>
+                    </div>
+                    </div>
+                 </div>
+            </div>
+    </div>
+    <script src="./assets/findvoc.js"></script>
+
+</body>
+</html>
