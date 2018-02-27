@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CMD COMBINER</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.0.min.js" integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="./assets/scrape.js"></script>
+  <style>
+        .br1 {
+            font-family: 'Anton', sans-serif;
+        }
+        nav ul a, nav .brand-logo {
+            color: #444;
+        }
+        body {
+            background: url(cinematic.jpg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+    </style>
+
+
+
+</head>
+<body>
+    <div class="navbar-fixed">
+            <nav>
+                <div class="nav-wrapper blue lighten-4">
+                    <a href="index.html" class="brand-logo br1" style="margin-left: 10px;"><em><strong>CMD HUB</strong></em></a>
+                    <ul class="right">
+                        <li><a href="index.html">Home</a></li>
+                    </ul>
+                </div>
+            </nav>
+    </div>
+
+
+    <div class="container" style="margin-top: 100px;">
+            <div class="card horizontal">
+              <div class="card-stacked">
+                <div class="card-content">
+
+
+                     <h4 class="center-align">Minehut Server Info</h4>
+                     <br>
+                     <p id="inpro" class="center-align">Gathering Minehut Info...</p>
+                     <p style="display:none;" id="plvisi" class="center-align">There are <span id="totpl"></span> players on Minehut, and <span id="totse"></span> servers online!</p>
+                     <br>
+                     <p class="center-align">Look at some cool information of <a href="https://www.minehut.com" target=_blank>minehut.com</a> servers!</p>
+                     <br>
+                     <br>
+                     <div class="row">
+                        <form class="col s12">
+                          <div class="row">
+                            <div class="input-field col s6 push-s3">
+                              <input placeholder="Luuke" id="vala" type="text" class="validate">
+                              <label for="vala">Server Name</label>
+                            </div>
+                        </form>
+                </div>
+                                
+                    <div class="center-align">
+                            <br>
+                            <a class="waves-effect waves-light btn btn-large indigo lighten-2 reesmee" style="width: calc(70% + 32px);">Submit</a>
+                     </div>
+                    </div>
+                 </div>
+            </div>
+    </div>
+
+
+
+
+    <div class="container" style="margin-top: 50px; width: 100%;">
+            <div class="card">
+              <div class="card-stacked">
+                <div class="card-content">
+                        <h5 class="center-align">Output</h5><br>
+                        <div class="row" id="absucc" style="display:none;">
+                            <h5>Server Name:</h5>
+                            <p id="servername"></p><br>
+                            <h5>Server Type:</h5>
+                            <p id="servertype"></p><br>
+                            <h5>Credits per Day:</h5>
+                            <p id="cpd"></p><br>
+                            <h5>MOTD:</h5>
+                            <p id="motd"></p><br>
+                            <h5>Visible to Community?:</h5>
+                            <p id="visi"></p><br>
+                            <h5>Default World Name:</h5>
+                            <p id="wrldn"></p><br>
+                            <h5>World Type:</h5>
+                            <p id="wtype"></p><br>
+                            <h5>Max Players:</h5>
+                            <p id="maxp"></p><br>
+                        </div>  
+                        <div class="row center" id="abfail" style="display:none">
+                            <h5>Server not found!</h5>
+                        </div>   
+                     </div>
+                 </div>
+            </div>
+    </div>
+</body>
+</html>
