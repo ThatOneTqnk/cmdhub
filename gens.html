@@ -5,9 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>Command Hub</title>
         
+        <!-- JS -->
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
         <!-- CSS  -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+        <link href="./assets/css/animate.css" rel="stylesheet">
         <style>
         .br1 {
             font-family: 'Anton', sans-serif;
@@ -15,29 +19,187 @@
         nav ul a, nav .brand-logo {
             color: #444;
         }
-        body {
-            background: #403A3E;
-            background: -webkit-linear-gradient(to right, #BE5869, #403A3E); 
-            background: linear-gradient(to right, #BE5869, #403A3E); 
+        .bg1 {
+            background-image: url('./assets/bg/lightd.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center; 
         }
+        
+        .bg3 {
+            background: rgb(241, 230, 230);
+        }
+
+        p, h6 {
+            line-height: 1.5em;
+        }
+
+        div > h6 {
+            color: rgb(71, 70, 70);
+        }
+
+        .logo-off {
+            margin-left: 1%;
+        }
+
+        div > a {
+            color: rgb(36, 33, 33) !important;
+        }
+
+        .card-content {
+            color: black;
+        }
+
         @media screen and (min-width: 768px) {
-            .logo-off {
-                margin-left: 1%;
+            .respslide {
+                margin-top: -1.5%;
+            }
+        }
+        @media screen and (max-width: 767px) {
+            .respslide {
+                margin-top: -5.2%;
             }
         }
         </style>
     </head>
     <body>
-        <nav>
-            <div class="nav-wrapper white" style="font-weight: 300;">
-                <a href="./" class="brand-logo black-text logo-off" style="font-family: 'Anton', sans-serif;"><em>CMD HUB</em></a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="collapsible.html" class="black-text"></a></li>
-                </ul>
+    <h4><a href="./" class="brand-logo black-text logo-off" style="font-weight: 300; font-family: 'Anton', sans-serif;"><em>CMD HUB</em></a></h4>
+    <div class="container-fluid bg1 white-text">
+        <div class="container">
+            <br><br>
+            <h3 style="color: rgb(85, 82, 82);" class="center">Tools</h3>
+            <h6 style="color: rgb(105, 101, 101); line-height: 1.6em;" class="center">Browse through our collection of generators!<br>If any bugs are present, feel free to contact<br>ThatOneTqnk.</h6>
+            <br>
+            <div class="row ca1">
+                <div class="col s12 m4 offset-m1">
+                    <div class="card horizontal">
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h5>Command Combiner</h5>
+                                <h6>Create one compact one commands!</h6>
+                            </div>
+                            <div class="card-action">
+                                <a href="./cmdgen">Click to use</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>      
+                <div class="col s12 m4 offset-m2">
+                    <div class="card horizontal">
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h5>Minehut Server List</h5>
+                                <h6>A list of all Minehut servers!</h6>
+                            </div>
+                            <div class="card-action">
+                                <a href="./mhs">Click to use</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>           
             </div>
-        </nav>
-
-    <div class="container" style="margin-top: 100px;">
+            <div class="row ca2">
+                    <div class="col s12 m4 offset-m1">
+                        <div class="card horizontal">
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <h5>Colored scoreboard</h5>
+                                    <h6>Create colored scoreboards!</h6>
+                                </div>
+                                <div class="card-action">
+                                    <a href="./scoreboard">Click to use</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>      
+                    <div class="col s12 m4 offset-m2">
+                        <div class="card horizontal">
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <h5>Find and Replace</h5>
+                                    <h6>A simple text replacer.</h6>
+                                </div>
+                                <div class="card-action">
+                                    <a href="./matcs">Click to use</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>           
+            </div>
+        </div>
+    </div>  
+    <div class="container">
+        <div class="row">
+            <div class="center">
+                <br><br>
+                <h2>Testimonials</h2>
+                <p>Proof that our stuff is cool beans!</p>
+                <br><br>
+            </div>
+        </div>
+    </div>
+    <div class="slider respslide">
+        <ul class="slides">
+            <li>
+            <img src="./assets/bg/manycmds.png"> <!-- random image -->
+            <div class="caption left-align">
+                <div class="container-fluid" style="margin-left: -10%;">
+                    <div class="row left">
+                        <div class="col-sm-1">
+                            <div class="card horizontal">
+                                <div class="card-stacked">
+                                    <div class="card-content">
+                                        <h5>Vocall <span><img src="https://minotar.net/avatar/Vocall/100" style="width: 30px; height:30px; margin-left: 49%;"></span></h5>
+                                        <h6 style="color: rgb(56, 53, 53);"><em>"Tqnk is a smelly backyardigan"</em></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </li>
+            <li>
+            <img src="./assets/bg/manycmds.png"> <!-- random image -->
+            <div class="caption left-align">
+                    <div class="container-fluid" style="margin-left: -10%;">
+                        <div class="row left">
+                            <div class="col-sm-1">
+                                <div class="card horizontal">
+                                    <div class="card-stacked">
+                                        <div class="card-content">
+                                            <h5>Hooopla <span><img src="https://minotar.net/avatar/Hooopla/100" style="width: 30px; height:30px; margin-left: 28%;"></span></h5>
+                                            <h6 style="color: rgb(56, 53, 53);"><em>"What am I even doing here?"</em></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+            <img src="./assets/bg/manycmds.png"> <!-- random image -->
+            <div class="caption left-align">
+                    <div class="container-fluid" style="margin-left: -10%;">
+                        <div class="row left">
+                            <div class="col-sm-1">
+                                <div class="card horizontal">
+                                    <div class="card-stacked">
+                                        <div class="card-content">
+                                            <h5>Razviti <span><img src="https://minotar.net/avatar/Razviti/100" style="width: 30px; height:30px; margin-left: 48%;"></span></h5>
+                                            <h6 style="color: rgb(56, 53, 53);"><em>"How much am I getting paid for this?"</em></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- <div class="container" style="margin-top: 100px;">
        <div class="card horizontal">
          <div class="card-stacked">
            <div class="card-content">
@@ -62,8 +224,19 @@
             </div>
        </div>
     </div>
+</div> -->
+<br>
+<footer class="page-footer bg3" style="margin-top: -5px;">
+        <div class="container" style="color: rgb(63, 52, 52);">
+        Made by <a class="brown-text text-lighten-3" href="http://github.com/ThatOneTqnk" target=_blank>ThatOneTqnk</a><br><br>
+        </div>
+</footer>
     <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.slider').slider();
+        });
+    </script>
+    <script src="./assets/js/ingen.js"></script>
     </body>
 </html>
