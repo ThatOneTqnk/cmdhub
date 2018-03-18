@@ -83,6 +83,7 @@
     </div>
 
     <script>
+        let preset;
         var totalcmd;
         var typemap;
         var newl;
@@ -98,6 +99,7 @@
             function parseCMD() {
                 var templist = [];
                 var initials = [];
+                let extras;
                 var condi; // lets make an example. suppose newl has 1 item in its array: N:setblock ~ ~ ~ command_block 0 0 {Command:"tellraw @a \"\\u00a7cnested\""}
                 for(x = 0; x < newl.length; x++) {
                     templist = [];
@@ -108,7 +110,155 @@
                         templist[0] = "++z++";
                         typemap.push(templist);
                         continue;
-                    }
+                        // preset tests begin below
+                    } else if (newl[x].slice(0,6).toLowerCase() == 'queue[' && newl[x].indexOf(']') >= 0) {
+                        console.log('enter a preset chain');
+                        preset = newl[x].indexOf("]");
+                        extras = newl[x].slice(6, preset).split(/,/gi);
+                        var btemp = ['queue', 'Game Name', 'q1', 'green', 2, 20, 'false', 'tqnk', 'actionbar', 'f1', 1, 'default'];
+                        for(var ext = 0; ext < extras.length; ext++) {
+                            if(extras[ext].toLowerCase().indexOf('objective:') >= 0) {
+                                let anobj = extras[ext].replace(/objective:/gi , '');
+                                anobj = anobj.trim();
+                                btemp[0] = anobj.toString();
+                            } else if(extras[ext].toLowerCase().indexOf('game:') >= 0) {
+                                let anobj = extras[ext].replace(/game:/gi, '');
+                                anobj = anobj.trim();
+                                btemp[1] = anobj.toString();
+                            } else if(extras[ext].toLowerCase().indexOf('team:') >= 0) {
+                                let anobj = extras[ext].replace(/team:/gi, '');
+                                anobj = anobj.trim();
+                                btemp[2] = anobj.toString();
+                            } else if(extras[ext].toLowerCase().indexOf('color:') >= 0) {
+                                let anobj = extras[ext].replace(/color:/gi, '');
+                                anobj = anobj.trim();
+                                btemp[3] = anobj.toString().toLowerCase();
+                            } else if(extras[ext].toLowerCase().indexOf('min:') >= 0) {
+                                let anobj = extras[ext].replace(/min:/gi, '');
+                                anobj = anobj.trim();
+                                btemp[4] = anobj.toString();
+                            } else if(extras[ext].toLowerCase().indexOf('time:') >= 0) {
+                                let anobj = extras[ext].replace(/time:/gi, '');
+                                anobj = anobj.trim();
+                                btemp[5] = anobj.toString();
+                            } else if(extras[ext].toLowerCase().indexOf('override:') >= 0) {
+                                let anobj = extras[ext].replace(/override:/gi, '');
+                                anobj = anobj.trim();
+                                btemp[6] = anobj.toString();
+                            } else if(extras[ext].toLowerCase().indexOf('type:') >= 0) {
+                                let anobj = extras[ext].replace(/type:/gi, '');
+                                anobj = anobj.trim();
+                                btemp[7] = anobj.toString();
+                            } else if(extras[ext].toLowerCase().indexOf('display:') >= 0) {
+                                let anobj = extras[ext].replace(/display:/gi, '');
+                                anobj = anobj.trim();
+                                btemp[8] = anobj.toString().toLowerCase();
+                            } else if(extras[ext].toLowerCase().indexOf('function:') >= 0) {
+                                let anobj = extras[ext].replace(/function:/gi, '');
+                                anobj = anobj.trim();
+                                btemp[9] = anobj.toString();
+                            } else if(extras[ext].toLowerCase().indexOf('per:') >= 0) {
+                                let anobj = extras[ext].replace(/per:/gi, '');
+                                anobj = anobj.trim();
+                                btemp[10] = anobj.toString();
+                            } else if(extras[ext].toLowerCase().indexOf('default:') >= 0) {
+                                let anobj = extras[ext].replace(/default:/gi, '');
+                                anobj = anobj.trim();
+                                btemp[11] = anobj.toString();
+                            };
+                        };
+                        console.log(btemp);
+                        var randtag = Math.floor(Math.random() * 10000);
+                        console.log(randtag);
+                        //var btemp = ['queue', 'Game Name', 'q1', 'green', 2, 20, 'false', 'tqnk', 'actionbar', 'f1', 1, 'default'];
+                        let typedisp;
+                        if(btemp[8] == 'tellraw') {
+                            typedisp = 'tellraw @a'
+                        } else {
+                            typedisp = 'title @a actionbar'
+                        }
+                        var finalq = [
+                            ['r', `tellraw @a[score_${btemp[0]}_min=1,team=!${btemp[2]}] \\\\\\"\\\\\\\\u00a77You have \\\\\\\\u00a7ajoined the queue \\\\\\\\u00a77for \\\\\\\\u00a7e${btemp[1]}!\\\\\\"`],
+                            ['c', `execute @a[score_${btemp[0]}_min=1,team=!${btemp[2]}] ~ ~ ~ playsound block.note.flute master @s ~ ~ ~ 1000 0.6`],
+                            ['c', `scoreboard players tag @a[score_${btemp[0]}_min=1,team=!${btemp[2]}] add ${randtag}a`],
+                            ['c', `scoreboard teams join ${btemp[2]} @a[tag=${randtag}a]`],
+                            ['c', `scoreboard players reset @a[tag=${randtag}a] ${btemp[0]}`],
+                            ['c', `scoreboard players tag @a[tag=${randtag}a] remove ${randtag}a`],
+                            ['c', `tellraw @a[score_${btemp[0]}_min=1,team=${btemp[2]}] \\\\\\"\\\\\\\\u00a77You have \\\\\\\\u00a7cleft the queue \\\\\\\\u00a77for \\\\\\\\u00a7e${btemp[1]}!\\\\\\"`],
+                            ['c', `execute @a[score_${btemp[0]}_min=1,team=${btemp[2]}] ~ ~ ~ playsound block.note.flute master @s ~ ~ ~ 1000 0.4`],
+                            ['c', `scoreboard players tag @a[score_${btemp[0]}_min=1,team=${btemp[2]}] add ${randtag}b`],
+                            ['c', `scoreboard teams join ${btemp[11]} @a[tag=${randtag}b]`],
+                            ['c', `scoreboard players tag @a[tag=${randtag}b] remove ${randtag}b`],
+                            ['r', `scoreboard teams join ${btemp[11]} @a[team=]`],
+                            ['++z++'],
+                            ['r', `stats block ~ ~1 ~ set SuccessCount *q ${btemp[9]}`],
+                            ['r', `testfor @a[team=${btemp[0]}]`],
+                            ['r', `scoreboard players test *q ${btemp[9]} ${btemp[4]}`],
+                            ['cc', `scoreboard players test *g ${btemp[9]} 0 0`],
+                            ['cc', `scoreboard players set *g ${btemp[9]} 1`],
+                            ['cc', `blockdata ~ ~1 ~ {auto:1}`],
+                            ['i', 'blockdata ~ ~ ~ {auto:0}'],
+                            ['c', `scoreboard players set *t ${btemp[9]} 1`],
+                            ['c', `scoreboard players set *se ${btemp[9]} ${btemp[5]}`],
+                            ['c', `scoreboard players set *se2 ${btemp[9]} 0`],
+                            ['c', `${typedisp} \\\\\\"\\\\\\\\u00a7e${btemp[1]} \\\\\\\\u00a77will begin in \\\\\\\\u00a7a${btemp[5]} seconds!\\\\\\"`],
+                            ['c', `execute @a ~ ~ ~ playsound entity.wither.spawn master @s ~ ~ ~ 10000 0.1`],
+                            ['++z++'],
+                            ['r', `scoreboard players test *t ${btemp[9]} 1`],
+                            ['cc', `scoreboard players add *t ${btemp[9]} 1`],
+                            ['r', `scoreboard players test *t ${btemp[9]} 21`],
+                            ['cc', `scoreboard players set *t ${btemp[9]} 1`],
+                            ['cc', `scoreboard players remove *se ${btemp[9]} 1`],
+                            ['cc', `blockdata ~ ~1 ~ {auto:1}`],
+                            ['i', `blockdata ~ ~ ~ {auto:0}`],
+                            ['c', `scoreboard players test *se2 ${btemp[9]} ${btemp[10]}`],
+                            ['cc', `scoreboard players test *se ${btemp[9]} 1`],
+                            ['cc', `scoreboard players set *se2 ${btemp[9]} 0`],
+                            ['cc', `${typedisp} [\\\\\\"\\\\\\",{\\\\\\"text\\\\\\":\\\\\\"\\\\\\\\u00a78\\\\\\\\u00bb \\\\\\\\u00a7e${btemp[1]} \\\\\\\\u00a77will begin in \\\\\\"},{\\\\\\"score\\\\\\":{\\\\\\"objective\\\\\\":\\\\\\"${btemp[9]}\\\\\\",\\\\\\"name\\\\\\":\\\\\\"*se\\\\\\"},\\\\\\"color\\\\\\":\\\\\\"green\\\\\\"}]`],
+                            ['cc', `execute @a ~ ~ ~ playsound ui.button.click master @s ~ ~ ~ 1000 1`],
+                            ['c', `scoreboard players test *se ${btemp[9]} 0 0`],
+                            ['cc', `scoreboard players test *q ${btemp[9]} 0 ${btemp[4] - 1}`],
+                            ['cc', `scoreboard players set *t ${btemp[9]} 0`],
+                            ['cc', `scoreboard players set *g ${btemp[9]} 0`],
+                            ['cc', `tellraw @a \\\\\\"\\\\\\\\u00a78\\\\\\\\u00bb \\\\\\\\u00a7cNot enough players!\\\\\\"`],
+                            ['cc', `execute @a ~ ~ ~ playsound entity.villager.no master @s ~ ~ ~ 1000 1`],
+                            ['c', `scoreboard players test *se ${btemp[9]} 0 0`],
+                            ['cc', `scoreboard players test *q ${btemp[9]} ${btemp[4]}`],
+                            ['cc', `scoreboard players set *t ${btemp[9]} 0`],
+                            ['cc', `scoreboard players set *g ${btemp[9]} 2`],
+                            ['cc', `blockdata ~ ~1 ~ {auto:1}`],
+                            ['i', `blockdata ~ ~ ~ {auto:0}`],
+                            ['c', `tellraw @a \\\\\\"\\\\\\\\u00a78\\\\\\\\u00bb \\\\\\\\u00a7eGame \\\\\\\\u00a77will now begin!\\\\\\"`],
+                            ['c', `execute @a ~ ~ ~ playsound entity.player.levelup master @s ~ ~ ~ 1000 0.1`]
+                        ];
+                        //var btemp = ['queue', 'Game Name', 'q1', 'green', 2, 20, 'false', 'tqnk', 'actionbar', 'f1', 1, 'default'];
+                        var finalint = [
+                            `scoreboard objectives add ${btemp[0]} dummy`,
+                            `scoreboard teams add ${btemp[2]}`,
+                            `scoreboard teams option ${btemp[2]} color ${btemp[3]}`,
+                            `scoreboard teams option ${btemp[2]} collisionRule never`,
+                            `scoreboard teams option ${btemp[2]} friendlyfire false`,
+                            `scoreboard objectives add ${btemp[9]} dummy`,
+                            `scoreboard players add *q ${btemp[9]} 0`,
+                            `scoreboard players add *g ${btemp[9]} 0`,
+                            `scoreboard teams add ${btemp[11]}`,
+                            `scoreboard teams option ${btemp[11]} color gray`,
+                            `scoreboard teams option ${btemp[11]} collisionRule never`,
+                            `scoreboard teams option ${btemp[11]} friendlyfire false`
+                        ];
+                        for(var btempa = 0; btempa < finalq.length; btempa++) {
+                            console.log(finalq[btempa][0]);
+                            console.log(finalq[btempa][1]);
+                            typemap.push(finalq[btempa]);
+                        };
+                        for(var btempb = 0; btempb < finalint.length; btempb++) {
+                            console.log(finalint[btempb]);
+                            initials.push(finalint[btempb]);
+                        };
+                        continue;
+                    } else if (newl[x].slice(0,6).toLowerCase() == 'respawn[' && newl[x].indexOf(']') >= 0) {
+                        console.log('faggot');
+                    };  
                     var scmd = "zxy";
                     switch (newl[x].substring(0,2)) {
                             case "R:": 
@@ -198,11 +348,14 @@
                         templist[1] = rawcmd;
                         typemap.push(templist);
                     }
-                }
+                };
+                console.log('initials: ' + initials);
                 for (inti = 0; inti < initials.length; inti++) {
                     totalcmd += '{id:commandblock_minecart,Command:"' + initials[inti] + '"},' // adds final init product to totalcmd
                 }
                 var yup = -4;
+                console.log('final cmds: ')
+                console.log(typemap);
                 //alert((typemap[yval])[0] + ' ' + (typemap[yval])[1]);
                 for (var yval = 0; yval < typemap.length; yval++) {
                     yup++;
