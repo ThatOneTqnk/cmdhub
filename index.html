@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Command Hub</title>
 
@@ -11,36 +10,46 @@
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Montserrat" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+  <!-- Animate.css -->
+  <link href="./assets/css/animate.css" rel="stylesheet">
 <style>
   /* width */
   ::-webkit-scrollbar {
-        width: 6px;
-    }
+      width: 6px;
+  }
 
-    /* Track */
-    ::-webkit-scrollbar-track {
-        background: black;
-    }
-    
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-        background: rgb(95, 86, 86); 
-    }
+  /* Track */
+  ::-webkit-scrollbar-track {
+      background: black;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+      background: rgb(95, 86, 86); 
+  }
 
-    /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
-        background: #2c2626; 
-    }
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+      background: #2c2626; 
+  }
 
+  .para1 {
+    color: white !important;
+    font: sans-serif !important; 
+    text-transform:uppercase !important; 
+    font-weight: 300 !important;
+  }
   .br1 {
     font-family: 'Anton', sans-serif;
   }
-  /* BG GRADIENT uiGradient */
+
   .bg1 {
-    background: #000428;
-    background: -webkit-linear-gradient(to right, #004e92, #000428);
-    background: linear-gradient(to right, #004e92, #000428); 
+    background-image: url("./assets/bg/ep_naturalblack.png");
   }
+  /* BG GRADIENT uiGradient */
   .bg2 {
     background: #2C3E50;
     background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);
@@ -55,43 +64,14 @@
     background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);
     background: linear-gradient(to right, #eef2f3, #8e9eab);
   }
-  
-  nav ul a, nav .brand-logo {
-    color: #444;
-  }
-
 
   p {
     line-height: 2rem;
   }
 
-  .button-collapse {
-    color: #26a69a;
-  }
-
-  .parallax-container {
-    min-height: 380px;
-    line-height: 0;
-    height: 555px;
-    color: rgba(255,255,255,.9);
-  }
-    .parallax-container .section {
-      width: 100%;
-    }
-
-  @media only screen and (max-width : 992px) {
-    .parallax-container .section {
-      position: absolute;
-      top: 40%;
-    }
-    #index-banner .section {
-      top: 40%;
-    }
-  }
-
-  @media only screen and (max-width : 600px) {
-    #index-banner .section {
-      top: 0;
+  @media screen and (min-width: 768px) {
+    .logo-off {
+      margin-left: 1%;
     }
   }
 
@@ -105,10 +85,10 @@
   </style>
 </head>
 <body>
-
+<!--
   <div class="navbar-fixed">
     <nav>
-        <div class="nav-wrapper blue lighten-4">
+        <div class="nav-wrapper white">
           <a href="index.html" class="brand-logo br1" style="margin-left: 10px;"><em><strong>CMD HUB</strong></em></a>
           <ul class="right">
             <li><a href="cmdabout.html">About</a></li>
@@ -116,92 +96,62 @@
         </div>
     </nav>
   </div>
+-->
 
-
-
-  <div id="index-banner" class="parallax-container bg1">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <br><br>
-        <h1 class="header center white-text text-lighten-2" style="padding-top: 40px;">Command Hub</h1>
-          <div class="row center">
-            <h5 class="header col s12 light" style="font-weight: 300">Made for <span class="tiped">command developers.</span></h5>
-          </div>
-          <div class="row center">
-            <a href="gens.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get to the Goods</a>
-          </div>
-          <br><br>
+<nav>
+    <div class="nav-wrapper white" style="font-weight: 300;">
+      <a href="#" class="brand-logo black-text logo-off" style="font-family: 'Anton', sans-serif;"><em>CMD HUB</em></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="collapsible.html" class="black-text"></a></li>
+      </ul>
+    </div>
+  </nav>
+<div class="container-fluid bg1">
+    <div class="container para1">
+      <br><br>
+      <h1 class="header center" style="padding-top: 10px;"><strong>Command Hub</strong></h1>
+      <div class="row center">
+        <h5 class="header col s12 light" style="font-weight: 300">Made for <span class="tiped">command developers.</span></h5>
       </div>
-    </div>  
-  </div>
+      <div class="row center">
+        <a href="gens.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get to the Goods</a>
+      </div>
+      <br><br>
+    </div>
+</div>
 
-
-
-
-
-
-  <div class="row">
+<div class="row">
     <div class="col s12 m4">
-      <div class="icon-block">
+      <div class="icon-block animated fadeInUp">
         <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
         <h5 class="center">No more boxes</h5>
-        <p class="light">While they provide a nice aesthetic effect, one command boxes are just hectic and messy for developers.</p>
-      </div>
+        <p style="color: rgb(97, 93, 93);">While they provide a nice aesthetic effect, one command boxes are just hectic and messy for developers.</p>
     </div>
+  </div>
 
     <div class="col s12 m4">
-        <div class="icon-block">
+        <div class="icon-block animated fadeInUp">
             <h2 class="center brown-text"><i class="material-icons">card_giftcard</i></h2>
             <h5 class="center">Productive focus</h5>
-            <p class="light">Productive tools for command developers to hasten repetitive tasks. Preloaded customizable minigames to enjoy if you just want to relax.</p>
+            <p style="color: rgb(97, 93, 93);">Productive tools for command developers to hasten repetitive tasks. Preloaded customizable minigames to enjoy if you just want to relax.</p>
         </div>
     </div>
 
   <div class="col s12 m4">
-      <div class="icon-block">
+      <div class="icon-block animated fadeInUp">
         <h2 class="center brown-text"><i class="material-icons">check_circle</i></h2>
         <h5 class="center">Instant results</h5>
-        <p class="light">No bullshit in between. Just input the information and get what you want.</p>
+        <p style="color: rgb(97, 93, 93);">No bullshit in between. Just input the information and get what you want.</p>
       </div>
   </div>
 
 </div>
 
-<!--
-  <div class="row">
-    <div class="col s12 bg4" style="height:50px; margin-bottom:-20px;">
 
-    </div> -->
+  <footer class="page-footer bg3" style="margin-top: -5px;">
 
-
-
-<div class="row" style="margin-bottom: 0px;">
-    <div class="col s12 m6 bg3" style="height:450px;">
-        <div class="center-align txt1">
-          <br>
-          <h4>Testimonials</h4><br><br>
-          <p><em>" do u kno da wae "</em> <br>- ThatOneTqnk</p>
-          <p><em>" this website actually sucks ass "</em> <br>- CMDBlocks</p>
-          <p><em>" when do i get paid for this "</em> <br>- MHF_Fish</p>
-        </div>
-    </div>
-    <div class="col m6 hide-on-small-only"> 
-        <!--
-          width threshold 674
-          height 450
-        -->
-        <img src="https://github.com/ThatOneTqnk/newGit/blob/master/vocall.png?raw=true" style="margin-bottom: 0px; margin-left: -10px;" height=450 width=673>
-    </div>
-</div>
-  
-      
-
-
-
-  <footer class="page-footer bg2" style="margin-top: -5px;">
-
-      <div class="container">
-      Made by <a class="brown-text text-lighten-3" href="http://github.com/ThatOneTqnk">ThatOneTqnk</a><br><br>
+      <div class="container" style="color: rgb(63, 52, 52);">
+      Made by <a class="brown-text text-lighten-3" href="http://github.com/ThatOneTqnk" target=_blank>ThatOneTqnk</a><br><br>
       </div>
   </footer>
 
