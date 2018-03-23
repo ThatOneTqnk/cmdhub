@@ -1,0 +1,139 @@
+<html>
+    <head>
+        <title>CMD COMBINER</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        
+        <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.3.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+        <script src="./assets/js/mapres.js"></script>
+        <style>
+        .bg1 {
+            background-image: url('./assets/bg/lightd.png');
+        }
+        .bg2 {
+            background-image: url('./assets/bg/lightd.png');
+        }
+        @media screen and (min-width: 768px) {
+            .bg1 {
+                height: 40%;
+            }
+            .txt {
+                margin-left: 1%;
+            }
+        }
+        @media screen and (max-width: 767px) {
+            .bg1 {
+                height: 75%;
+            }
+            .txt {
+                margin-left: 3%;
+            }
+        }  
+        </style>
+    </head>
+    <body>
+        <h4><a href="./" class="brand-logo black-text logo-off" style="font-weight: 300; font-family: 'Anton', sans-serif;"><em>CMD HUB</em></a></h4>
+        <div class="container-fluid bg1">
+            <br>
+            <div class="txt">
+                <br>
+                <h5>Map Reset Generator</h5>
+                <br>
+                <h6 style="color: rgb(95, 92, 92);">Plug in two coordinates in a <strong>Positive X Positive Z</strong> format.<br>This will return a map reset in 1 structure block. <br>See instructions below.</h6>
+                <br>
+                <p><strong>Note:</strong> This generator is <span style="color: rgb(180, 53, 53);">experimental.</span></p>
+            </div>
+            <br>
+        </div>
+        
+<div class="row">
+    <br>
+    <h4 class="center">Input le information.</h4>
+    <br>
+    <form class="col s12">
+        <div class="row">
+            <div class="input-field col s6 push-s3">
+                <input id="txtarea1" type="text" class="validate">
+                <label for="txtarea1">Position Set 1, Example: 1 1 1</label>
+            </div>
+        </div>
+        <div class="row">
+        <div class="input-field col s6 push-s3">
+            <input id="txtarea2" type="text" class="validate">
+            <label for="txtarea2">Position Set 1, Example: 5 5 5</label>
+        </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6 push-s3">
+                <input id="txtarea3" type="text" class="validate">
+                <label for="txtarea3">Structure name, Example: house</label>
+            </div>
+        </div>
+    </form>
+</div>
+    <div class="center">
+        <button class="waves-effect waves-light btn btn-large indigo lighten-2 coord" style="width: 50%;">Submit</button>
+    </div>
+    <br>
+    <div class="container-fluid bg2">
+        <br>
+        <h5 class="center">Instructions</h5>
+        <p class="center" style="margin-left: 20%; margin-right: 20%;">To successfully compact your structure in to one structure block, make sure you have input the above fields correctly. The coordinate range should be Positive X to Positive Z. Meaning, all coordinate values in coord box 1 should be less then its corresponding value in coord box 2. Acceptable Example: Coord Box 1 = 1 1 1 and Coord Box 2 = 5 5 5. The structure name does not matter. Do not add any spaces in the structure name, or make it unnecessarily long.<br><br>As for the commands generated, you first want to make sure you are near the structure you are saving so all the chunks are loaded. Also, make sure you are high/low enough so that the commands generated do not spawn inside your structure (A displacement of 15 blocks or higher will work). First copy the 'Conflict Finder' command. Install it, and activate the chain that comes with it. This should report any conflicts that appear. What is a conflict? A conflict is a spot where a structure block component will be spawned, but a block of your structure will be erased if the installation were to take effect. If the chain does not report any errors, delete the chain and proceed to the next step.<br><br>Now, copy the Structure block Generator command. Paste it in, and you will see your structure mapped in the structure blocks. Activate the chain that spawns above you by turning it to always active. It should automatically dissapear upon activation. Proceed to the next step.<br><br>Finally, copy the Compacter command. Paste this in, and you will see a few command block machines spawned in. Turn on the repeating block that is on Needs Redstone. This should move the armorstand that is nearby. After the armorstand is killed, you can remove all the command blocks.<br><br>And then your structure is ready to be spawned in with a singular structure block. You can spawn it in with a structure block named "(structurename)1". Good luck! Any bugs should be reported to ThatOneTqnk.<br><br></p>
+        <div class="row">
+            <div class="col m3 push-m2 s12">
+                <button style="margin-left: 40%;" class="waves-effect waves-light btn btn-large indigo lighten-2 cop1">Copy</button>
+            </div>
+            <div class="col m3 push-m2 s12">
+                <button style="margin-left: 40%;" class="waves-effect waves-light btn btn-large indigo lighten-2 cop2">Copy</button>
+            </div>
+            <div class="col m3 push-m2 s12">
+                <button style="margin-left: 40%;" class="waves-effect waves-light btn btn-large indigo lighten-2 cop3">Copy</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col m3 push-m2 s12">
+                    <div class="row">
+                        <form class="col s12">
+                            <div class="row">
+                            <div class="input-field col s12">
+                                <textarea id="cmd1" class="materialize-textarea" readonly></textarea>
+                                <label for="cmd1">Conflict Finder</label>
+                            </div>
+                            </div>
+                        </form>
+                    </div>
+            </div>
+            <div class="col m3 push-m2 s12">
+                    <div class="row">
+                        <form class="col s12">
+                            <div class="row">
+                            <div class="input-field col s12">
+                                <textarea id="cmd2" class="materialize-textarea" readonly></textarea>
+                                <label for="cmd2">Structure block Generator</label>
+                            </div>
+                            </div>
+                        </form>
+                    </div>
+            </div>
+            <div class="col m3 push-m2 s12">
+                    <div class="row">
+                        <form class="col s12">
+                            <div class="row">
+                            <div class="input-field col s12">
+                                <textarea id="cmd3" class="materialize-textarea" readonly></textarea>
+                                <label for="cmd3">Compacter</label>
+                            </div>
+                            </div>
+                        </form>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+</html>
