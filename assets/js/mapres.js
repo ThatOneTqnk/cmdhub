@@ -160,8 +160,8 @@ $(document).ready(() => {
         console.log(totalcmd);
         console.log(totalcmd2);
         console.log(totalcmd3);
-        $('#cmd1').val(totalcmd);
-        $('#cmd2').val(totalcmd2);
+        $('#cmd1').val(totalcmd2);
+        $('#cmd2').val(totalcmd);
         $('#cmd3').val(totalcmd3);
     });
 
