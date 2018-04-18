@@ -58,6 +58,9 @@ $(document).ready(() =>{
 
         time *= 20;
         
+        // Reset temp var
+        x = 0;
+
         // Convert circle degrees to pos/neg
         if(coord1[3] > 180) coord1[3] -= 360;
         if(coord1[4] > 180) coord1[4] -= 360;
@@ -69,8 +72,11 @@ $(document).ready(() =>{
             delta[index] = coord2[index] - coord1[index];
             if(index === 3 && checc === true) {
                 console.log('test')
-                if(delta[3] < 0) delta[3] += 360
-                if(delta[3] > 0) delta[3] -= 360
+                if(delta[3] < 0) {
+                    delta[3] += 360
+                    x = 1;
+                }
+                if(delta[3] > 0 && x === 0) delta[3] -= 360
                 console.log(delta[3]);
             }
             delta[index] = delta[index] / time;
