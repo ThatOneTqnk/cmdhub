@@ -1,0 +1,13 @@
+.br1 {
+    font-family: 'Anton', sans-serif;
+}
+nav ul a, nav .brand-logo {
+    color: #444;
+}
+body {
+    background: url('../../cinematic.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
