@@ -21,7 +21,7 @@ $(document).ready(function(){
         var info;
         var info2;
         var http = new XMLHttpRequest;
-        http.open("GET", "https://pocket.minehut.com/servers/", true);
+        http.open("GET", "https://pocket.minehut.com/servers", true);
         http.send();
         http.onreadystatechange = function() {
             if(http.readyState == 4 && http.status == 200) {
