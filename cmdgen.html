@@ -188,7 +188,7 @@
                             ['c', `execute @a[score_${btemp[0]}_min=1,team=${btemp[2]}] ~ ~ ~ playsound block.note.flute master @s ~ ~ ~ 1000 0.4`],
                             ['c', `scoreboard players tag @a[score_${btemp[0]}_min=1,team=${btemp[2]}] add ${randtag}b`],
                             ['c', `scoreboard teams join ${btemp[11]} @a[tag=${randtag}b]`],
-                            ['c', `scoreboard players reset @a[tag=${randtag}b] remove ${randtag}b`],
+                            ['c', `scoreboard players reset @a[tag=${randtag}b] ${btemp[0]}`],
                             ['c', `scoreboard players tag @a[tag=${randtag}b] remove ${randtag}b`],
                             ['r', `scoreboard teams join ${btemp[11]} @a[team=]`],
                             ['++z++'],
@@ -216,7 +216,7 @@
                             ['c', `scoreboard players test *se2 ${btemp[9]} ${btemp[10]}`],
                             ['cc', `scoreboard players test *se ${btemp[9]} 1`],
                             ['cc', `scoreboard players set *se2 ${btemp[9]} 0`],
-                            ['cc', `${typedisp} [\\\\\\"\\\\\\",{\\\\\\"text\\\\\\":\\\\\\"\\\\\\\\u00a78\\\\\\\\u00bb \\\\\\\\u00a7e${btemp[1]} \\\\\\\\u00a77will begin in \\\\\\"},{\\\\\\"score\\\\\\":{\\\\\\"objective\\\\\\":\\\\\\"${btemp[9]}\\\\\\",\\\\\\"name\\\\\\":\\\\\\"*se\\\\\\"},\\\\\\"color\\\\\\":\\\\\\"green\\\\\\"}]`],
+                            ['cc', `${typedisp} [\\\\\\"\\\\\\",{\\\\\\"text\\\\\\":\\\\\\"\\\\\\\\u00a7e${btemp[1]} \\\\\\\\u00a77will begin in \\\\\\"},{\\\\\\"score\\\\\\":{\\\\\\"objective\\\\\\":\\\\\\"${btemp[9]}\\\\\\",\\\\\\"name\\\\\\":\\\\\\"*se\\\\\\"},\\\\\\"color\\\\\\":\\\\\\"green\\\\\\"}]`],
                             ['cc', `execute @a ~ ~ ~ playsound ui.button.click master @s ~ ~ ~ 1000 1`],
                             ['c', `scoreboard players test *se ${btemp[9]} 0 0`],
                             ['cc', `scoreboard players test *q ${btemp[9]} 0 ${btemp[4] - 1}`],
@@ -230,7 +230,7 @@
                             ['cc', `scoreboard players set *g ${btemp[9]} 2`],
                             ['cc', `blockdata ~ ~1 ~ {auto:1}`],
                             ['i', `blockdata ~ ~ ~ {auto:0}`],
-                            ['c', `tellraw @a \\\\\\"\\\\\\\\u00a78\\\\\\\\u00bb \\\\\\\\u00a7eGame \\\\\\\\u00a77will now begin!\\\\\\"`],
+                            ['c', `tellraw @a \\\\\\"\\\\\\\\u00a7e${btemp[1]} \\\\\\\\u00a77will now begin!\\\\\\"`],
                             ['c', `execute @a ~ ~ ~ playsound entity.player.levelup master @s ~ ~ ~ 1000 0.1`]
                         ];
                         //var btemp = ['queue', 'Game Name', 'q1', 'green', 2, 20, 'false', 'tqnk', 'actionbar', 'f1', 1, 'default'];
