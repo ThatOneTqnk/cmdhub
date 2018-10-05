@@ -30,7 +30,9 @@
         var ree1 = document.getElementById('obj').value;
         var ree2 = document.getElementById('crit').value;
         var ree3 = document.getElementById('content').value;
-        ree3 = ree3.replace(/&/g, '\\\\u00a7');
+        ree3 = ree3.replace(/[&||§]([0-9||a-f||k||l||m||n||o||r])/g, function(match, c) {
+            return `\\\\u00a7${c}`;
+        });
         if (ree2.length < 1) {
             ree2 = "dummy";
         } 
