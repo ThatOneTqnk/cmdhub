@@ -35,7 +35,9 @@
         cmd = cmd.replace(/"/g, '\\"');
         
         //cmd = cmd.replace(/\\/g, '\\\\');
-        cmd = cmd.replace(/&/g, '\\\\u00a7');
+        cmd = cmdreplace(/[&||§]([0-9||a-f||k||l||m||n||o||r])/g, function(match, c) {
+            return `\\\\u00a7${c}`;
+        });
         // cmd = cmd.replace(/\\/g, '\\\\');
         // cmd = cmd.replace(/"/g, '\\"');
         return cmd
