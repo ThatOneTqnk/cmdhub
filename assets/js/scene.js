@@ -26,7 +26,7 @@ $(document).ready(() =>{
         }
 
         // Finding invalid inputs.
-        time = parseDouble(time);
+        time = parseFloat(time);
         if(isNaN(time)) {
             snacc('Invalid time!');
             return;
@@ -41,12 +41,12 @@ $(document).ready(() =>{
         }
 
         coord1.forEach(function(part, index) {
-            coord1[index] = parseDouble(part);
+            coord1[index] = parseFloat(part);
             if (isNaN(coord1[index])) x = 1;
             coord1full += coord1[index] + ' '
         });
         coord2.forEach(function(part, index) {
-            coord2[index] = parseDouble(part);
+            coord2[index] = parseFloat(part);
             if (isNaN(coord2[index])) x = 1;
         });
         if(x === 1) {
