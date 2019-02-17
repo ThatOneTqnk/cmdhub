@@ -3,7 +3,7 @@ $(document).ready(function(){
     var txta = [];
     var txtb = [];
     var http = new XMLHttpRequest;
-    http.open("GET", "https://pocket.minehut.com/servers", true);
+    http.open("GET", "https://api.minehut.com/servers", true);
     http.send();
     http.onreadystatechange = function() {
         if(http.readyState == 4 && http.status == 200) {
